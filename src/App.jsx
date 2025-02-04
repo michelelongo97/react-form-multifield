@@ -2,7 +2,11 @@ import { useState } from "react";
 
 export default function App() {
   const [article, setArticle] = useState([]);
-  const [articleList, setArticleList] = useState({ title: "", author: "" });
+  const [articleList, setArticleList] = useState({
+    title: "",
+    author: "",
+    content: "",
+  });
 
   const handleField = (fieldName, value) => {
     setArticleList((currentArticleList) => ({
@@ -20,6 +24,7 @@ export default function App() {
     setArticleList({
       title: "",
       author: "",
+      content: "",
     });
   };
 
@@ -29,7 +34,7 @@ export default function App() {
       <ul>
         {article.map((item) => (
           <li key={item.title}>
-            {item.title} - {item.author}
+            {item.title} - {item.author} - {item.content}
           </li>
         ))}
       </ul>
@@ -46,6 +51,12 @@ export default function App() {
           value={articleList.author}
           onChange={(event) => handleField("author", event.target.value)}
           placeholder="Scrivi l'autore"
+        />
+        <input
+          type="text"
+          value={articleList.content}
+          onChange={(event) => handleField("content", event.target.value)}
+          placeholder="Scrivi il contenuto"
         />
         <button type="submit">Invia</button>
       </form>
