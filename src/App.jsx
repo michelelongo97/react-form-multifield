@@ -6,6 +6,7 @@ export default function App() {
     title: "",
     author: "",
     content: "",
+    type: "",
   });
 
   const handleField = (fieldName, value) => {
@@ -25,6 +26,7 @@ export default function App() {
       title: "",
       author: "",
       content: "",
+      type: "",
     });
   };
 
@@ -34,7 +36,7 @@ export default function App() {
       <ul>
         {article.map((item) => (
           <li key={item.title}>
-            {item.title} - {item.author} - {item.content}
+            {item.title} - {item.author} - {item.content} - {item.type}
           </li>
         ))}
       </ul>
@@ -58,6 +60,14 @@ export default function App() {
           onChange={(event) => handleField("content", event.target.value)}
           placeholder="Scrivi il contenuto"
         />
+        <select
+          value={articleList.type}
+          onChange={(event) => handleField("type", event.target.value)}
+        >
+          <option value="FrontEnd">FrontEnd</option>
+          <option value="BackEnd">BackEnd</option>
+          <option value="UI/UX">UI/UX</option>
+        </select>
         <button type="submit">Invia</button>
       </form>
     </>
